@@ -127,7 +127,11 @@ You may continue to use ansible-navigator to inspect this execution environment 
 * see this link for the documentation: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.0-ea/html-single/managing_containers_in_private_automation_hub/index
 
 **Step 1**
-- Push images from podman to Automation hub
+
+Push images from podman to Automation hub
+- Tag image
+- Login into Automation Hub
+- Push the tagged image
 ```bash
 $ podman images
 
