@@ -7,7 +7,7 @@ See this link for ansible-navigator guide: https://access.redhat.com/documentati
 
 ## ansible-navigator settings
 You are able to configure the settings of ansible-navigator what you see below are three main parameters:
-- execution-environment
+- execution-environment (EE)
 - playbook-artifact
 - logging
 
@@ -67,7 +67,7 @@ To inspect the play on ```vscode```, start by pressing ``0``, inspect the first 
 ## ansible-navigator using execution environment from podman
 
 **Step 1**
-- Login and Pull Ansible EE images from registry.redhat.io from ``podman``
+- From ``podman`` Login into registry.redhat.io or registries containing the EE image
 
 ```bash
 $ podman login registry.redhat.io
@@ -82,7 +82,7 @@ $ podman images
 $ ansible-navigator images
 ```
 **Step 2**
-- Update your image with the respective image name
+- Update your image with the respective image name in ```ansible-navigator.yml```
 - change enable to ``true``
 
 ```yaml
@@ -94,7 +94,7 @@ execution-environment:
 
 
 **Step 3**
-You may add in a ```wait_for``` module to show the playbook has been executed as a container on podman
+You may add in a ```wait_for``` module in the playbook ```ping_test.yml``` if you would like to show the playbook running as a container on podman
 
 ```yaml
 wait_for:
@@ -110,7 +110,7 @@ $ ansible-navigator run ping_test.yml
 ```
 **Option 2**
 - If the respective image are currently not present.
-- Directly run the playbook and let ```ansible-navigator``` initiate a pull process, where an execution environment is being pulled from a container registry.
+- Directly run the playbook and let ```ansible-navigator``` initiate a pull process, where an execution environment is being pulled from the container registry.
 ```bash
 $ ansible-navigator run ping_test.yml
 ```
