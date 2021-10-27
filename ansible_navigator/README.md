@@ -49,6 +49,8 @@ You are able to configure the settings of ansible-navigator to open an output of
 There is an option to see the output on the console instead of an editor as well.
 
 **For vscode**
+Edit ```ansible-navigator.yml``` with the following configurations
+
 ```yaml
 editor:
   command: code -g {filename}:{line_number}
