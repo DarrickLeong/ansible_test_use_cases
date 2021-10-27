@@ -56,7 +56,7 @@ editor:
 ```
 Inspect the play by pressing ``0``, inspect the first task by pressing ``0`` again and issue the subcommand ``:open``
 
-## Using execution environment from ansible-navigator
+## ansible-navigator Using execution environment from podman
 
 **Step 1**
 - Login and Pull Ansible EE images from registry.redhat.io from ``podman``
@@ -98,8 +98,8 @@ $ watch podman ps
 CONTAINER ID  IMAGE                                                                                                 COMMAND               CREATED         STATUS             PORTS   NAMES
 fce3314a3e05  registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:2.0.1-6.1634243686  ansible-playbook ...  10 seconds ago  Up 10 seconds ago          ansible_runner_f4a4e932-013b-4dd3-8487-f7e45f27a40
 ```
-Notice that ansible-navigator knows that it should be using an execution environment but none are currently present. You should see a pull process happening now where an execution environment is being pulled from container registry. ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
+You may continue to use ansible-navigator to inspect this execution environment by issuing the ```:collections``` subcommand.
 
-Your test.yml file should have executed successfully. You can now use ansible-navigator to inspect this execution environment by issuing the :collections subcommand.
-
-While inspecting collections, there is a module in the ansible.utils collection called fact_diff. Locate the author of this module and remember the github handle associated with this person.
+## ansible-navigator Using execution environment from automation hub
+ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
+see this link for the documentation: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.0-ea/html-single/managing_containers_in_private_automation_hub/index
