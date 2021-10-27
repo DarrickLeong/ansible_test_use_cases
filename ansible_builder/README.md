@@ -1,4 +1,6 @@
-# Ansible Automation Platform 2.x Test Use Cases
-Test Use Cases for ansible automation platform
+# ansible_builder Test Use Cases
+Test Use Cases for ansible builder
 
-## ansible-navigator
+## ansible-builder
+**About Ansible Builder**
+Ansible Builder is a command line tool that automates the process of building automation execution environments by using the metadata defined in various Ansible Collections, as well as by the user.
