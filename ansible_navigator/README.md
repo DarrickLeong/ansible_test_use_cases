@@ -84,8 +84,20 @@ execution-environment:
     image: ee-supported-rhel8:2.0.1-6.1634243686
     enabled: true
 ```
-Open ansible-navigator.yml and change enabled: false to enabled: true under the execution-environment settings block.
+**Step 3**
+You may add in a ```wait_for``` module to show the playbook has been executed as a container on podman
 
+```yaml
+wait_for:
+  timeout: 30
+```
+
+```bash
+$ watch podman ps
+
+CONTAINER ID  IMAGE                                                                                                 COMMAND               CREATED         STATUS             PORTS   NAMES
+fce3314a3e05  registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:2.0.1-6.1634243686  ansible-playbook ...  10 seconds ago  Up 10 seconds ago          ansible_runner_f4a4e932-013b-4dd3-8487-f7e45f27a40
+```
 Notice that ansible-navigator knows that it should be using an execution environment but none are currently present. You should see a pull process happening now where an execution environment is being pulled from container registry. ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
 
 Your test.yml file should have executed successfully. You can now use ansible-navigator to inspect this execution environment by issuing the :collections subcommand.

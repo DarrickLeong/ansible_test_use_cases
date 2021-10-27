@@ -12,5 +12,7 @@
     debug:
       msg: "{{ msg }}"
 
-  - name: 
+  - name: delay to show container running on podman
+    wait_for:
+      timeout: 30
 
