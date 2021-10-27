@@ -103,3 +103,18 @@ You may continue to use ansible-navigator to inspect this execution environment 
 ## ansible-navigator Using execution environment from automation hub
 * ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
 * see this link for the documentation: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.0-ea/html-single/managing_containers_in_private_automation_hub/index
+
+
+```bash
+$ podman images
+
+$ podman tag registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:2.0.1-6.1634243686 automationhub.home.com/ee-supported-rhel8:latest
+
+$ podman images
+
+$ podman login -u=[username] -p=[password] [automation-hub-url]
+Login Succeeded!
+
+$ podman push [automation-hub-url]/[container image name]
+
+```
