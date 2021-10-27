@@ -94,7 +94,7 @@ execution-environment:
 
 
 **Step 3**
-You may add in a ```wait_for``` module in the playbook ```ping_test.yml``` if you would like to show the playbook running as a container on podman
+You may add in a ```wait_for``` module in the playbook ```ping_test.yml``` to show the playbook running as a container on podman
 
 ```yaml
 wait_for:
