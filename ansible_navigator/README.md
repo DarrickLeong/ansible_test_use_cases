@@ -93,7 +93,7 @@ You may add in a ```wait_for``` module to show the playbook has been executed as
 wait_for:
   timeout: 30
 ```
-- Now, you have now two options, you may notice that ```ansible-navigator``` knows that it should be using an execution environment but if none are currently present. You should see a pull process happening now where an execution environment is being pulled from container registry.
+- Now that ```ansible-navigator``` knows that it should be using an execution environment you have two options:
 
 **Option 1**
 - Pull the image directly into podman
@@ -102,7 +102,8 @@ $ podman pull registry.redhat.io/ansible-automation-platform-20-early-access/ee-
 $ ansible-navigator run ping_test.yml
 ```
 **Option 2**
-- Directly run the playbook and let ```ansible-navigator``` pull the image
+- If the respective image are currently not present.
+- Directly run the playbook and let ```ansible-navigator``` initiate a pull process, where an execution environment is being pulled from a container registry.
 ```bash
 $ ansible-navigator run ping_test.yml
 ```
