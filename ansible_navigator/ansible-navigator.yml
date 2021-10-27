@@ -2,7 +2,7 @@
 ansible-navigator:
   execution-environment:
     container-engine: podman
-    image: ansible-automation-platform-20-early-access/ee-supported-rhel8
+    image: automationhub.home.com/ee-supported-rhel8
     enabled: true
 
   playbook-artifact:

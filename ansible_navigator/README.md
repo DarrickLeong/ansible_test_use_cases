@@ -93,7 +93,7 @@ You may add in a ```wait_for``` module to show the playbook has been executed as
 wait_for:
   timeout: 30
 ```
-- Now that ```ansible-navigator``` knows that it should be using an execution environment you have two options:
+Now that ```ansible-navigator``` knows that it should be using an execution environment you have two options:
 
 **Option 1**
 - Pull the image directly into podman
@@ -111,7 +111,7 @@ $ ansible-navigator run ping_test.yml
 $ watch podman ps
 
 CONTAINER ID  IMAGE                                                                                                 COMMAND               CREATED         STATUS             PORTS   NAMES
-fce3314a3e05  registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:2.0.1-6.1634243686  ansible-playbook ...  10 seconds ago  Up 10 seconds ago          ansible_runner_f4a4e932-013b-4dd3-8487-f7e45f27a40
+fce3314a3e05  registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:latest  ansible-playbook ...  10 seconds ago  Up 10 seconds ago          ansible_runner_f4a4e932-013b-4dd3-8487-f7e45f27a40
 ```
 You may continue to use ansible-navigator to inspect this execution environment by issuing the ```:collections``` subcommand.
 
@@ -119,15 +119,47 @@ You may continue to use ansible-navigator to inspect this execution environment 
 * ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
 * see this link for the documentation: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.0-ea/html-single/managing_containers_in_private_automation_hub/index
 
-
+**Step 1**
+- Push images from podman to Automation hub
 ```bash
 $ podman images
 
-$ podman tag registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:2.0.1-6.1634243686 automationhub.home.com/ee-supported-rhel8:latest
+$ podman tag registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:latest [automation-hub-url]/ee-supported-rhel8:latest
 
 $ podman login -u=[username] -p=[password] [automation-hub-url]
 Login Succeeded!
 
 $ podman push [automation-hub-url]/[container image name]
+```
+**Step 2**
+- Edit container registry configuration file with the DNS of the registry
+- If registry is insecure placed in under ```[registries.insecure]```
+```bash
+$ sudo vim /etc/containers/registries.conf
 
+[registries.search]
+registries = ['registry.access.redhat.com', 'registry.redhat.io', 'docker.io', 'automation-hub-url']
+```
+**Step 3**
+To see if it is working
+- Clear the pushed imaged from podman as we would like ansible-navigator to pull the image instead
+
+```bash
+$ podman rmi [automation-hub-url]/[container image name]
+```
+
+- Edit ```ansible-navigator.yml``` file to the image url in automation hub
+```bash
+$ vim ansible-nagivator.yml
+```
+```yaml
+execution-environment:
+    container-engine: podman
+    image: [automation-hub-url]/[container image name]
+    enabled: true
+```
+
+- Run Playbook
+```bash
+$ ansible-navigator run ping_test.yml
 ```
