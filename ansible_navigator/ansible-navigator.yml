@@ -10,3 +10,7 @@ ansible-navigator:
 
   logging:
     level: debug
+
+  #editor:
+  #  command: code -g {filename}:{line_number}
+  #  console: false
