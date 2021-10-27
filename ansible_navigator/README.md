@@ -110,8 +110,6 @@ $ podman images
 
 $ podman tag registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8:2.0.1-6.1634243686 automationhub.home.com/ee-supported-rhel8:latest
 
-$ podman images
-
 $ podman login -u=[username] -p=[password] [automation-hub-url]
 Login Succeeded!
 
