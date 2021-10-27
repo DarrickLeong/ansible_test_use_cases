@@ -56,7 +56,9 @@ Inspect the play by pressing ``0``, inspect the first task by pressing ``0`` aga
 
 ## Using execution environment from ansible-navigator
 Login and Pull Ansible EE images from registry.redhat.io from ``podman``
-![Step 1]
+
+**Step 1**
+
 ```bash
 podman login registry.redhat.io
 Username: {REGISTRY-SERVICE-ACCOUNT-USERNAME}
