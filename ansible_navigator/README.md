@@ -67,7 +67,7 @@ To inspect the play on ```vscode```, start by pressing ``0``, inspect the first 
 ## ansible-navigator using execution environment from podman
 
 **Step 1**
-- From ``podman`` Login into registry.redhat.io or registries containing the EE image
+- From ``podman``, login into registry.redhat.io or registries containing the EE image
 
 ```bash
 $ podman login registry.redhat.io
