@@ -47,7 +47,7 @@ You are able to configure the settings of ansible-navigator to open an output of
 **For vscode**
 ```yaml
 editor:
-  command: code-server {filename}
+  command: code -g {filename}:{line_number}
   console: false
 ```
 Inspect the play by pressing ``0``, inspect the first task by pressing ``0`` again and issue the subcommand ``:open``
