@@ -42,7 +42,9 @@ There are many commands that you can use with ansible-navigator here are a few t
   ansible-navigator doc ping
   ```
 ## ansible-navigator opening files on preferred editor
-You are able to configure the settings of ansible-navigator to open an output of a task in a preferred editor. If no configuration is done the default edirot will be ``vi``.
+You are able to configure the settings of ansible-navigator to open an output of a task in a preferred editor. If no configuration is done the default editor will be ``vi``.
+
+There is an option to see the output on the console instead of an editor as well.
 
 **For vscode**
 ```yaml
@@ -51,3 +53,22 @@ editor:
   console: false
 ```
 Inspect the play by pressing ``0``, inspect the first task by pressing ``0`` again and issue the subcommand ``:open``
+
+## Using execution environment from ansible-navigator
+Login and Pull Ansible EE images from registry.redhat.io from ``podman``
+![Step 1]
+```bash
+podman login registry.redhat.io
+Username: {REGISTRY-SERVICE-ACCOUNT-USERNAME}
+Password: {REGISTRY-SERVICE-ACCOUNT-PASSWORD}
+Login Succeeded!
+
+podman pull registry.redhat.io/ansible-automation-platform***********/********
+```
+Open ansible-navigator.yml and change enabled: false to enabled: true under the execution-environment settings block.
+
+Notice that ansible-navigator knows that it should be using an execution environment but none are currently present. You should see a pull process happening now where an execution environment is being pulled from container registry. ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
+
+Your test.yml file should have executed successfully. You can now use ansible-navigator to inspect this execution environment by issuing the :collections subcommand.
+
+While inspecting collections, there is a module in the ansible.utils collection called fact_diff. Locate the author of this module and remember the github handle associated with this person.
