@@ -101,5 +101,5 @@ fce3314a3e05  registry.redhat.io/ansible-automation-platform-20-early-access/ee-
 You may continue to use ansible-navigator to inspect this execution environment by issuing the ```:collections``` subcommand.
 
 ## ansible-navigator Using execution environment from automation hub
-ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
-see this link for the documentation: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.0-ea/html-single/managing_containers_in_private_automation_hub/index
+* ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
+* see this link for the documentation: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.0-ea/html-single/managing_containers_in_private_automation_hub/index
