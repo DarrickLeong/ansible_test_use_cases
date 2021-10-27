@@ -3,7 +3,7 @@ ansible-navigator:
   execution-environment:
     container-engine: podman
     image: automationhub.home.com/ee-supported-rhel8
-    enabled: true
+    enabled: false
 
   playbook-artifact:
     save-as: /home/darrick/playbook-artifacts/{playbook_name}-artifact-{ts_utc}.json
