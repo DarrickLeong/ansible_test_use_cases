@@ -64,7 +64,7 @@ $ ansible-navigator run ping_test.yml
 ```
 To inspect the play on ```vscode```, start by pressing ``0``, inspect the first task by pressing ``0`` again and issue the subcommand ``:open``
 
-## ansible-navigator Using execution environment from podman
+## ansible-navigator using execution environment from podman
 
 **Step 1**
 - Login and Pull Ansible EE images from registry.redhat.io from ``podman``
