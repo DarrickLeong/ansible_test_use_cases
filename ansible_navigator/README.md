@@ -54,7 +54,12 @@ editor:
   command: code -g {filename}:{line_number}
   console: false
 ```
-Inspect the play by pressing ``0``, inspect the first task by pressing ``0`` again and issue the subcommand ``:open``
+Run the playbook
+
+```bash
+$ ansible-navigator run ping_test.yml
+```
+To inspect the play on ```vscode```, start by pressing ``0``, inspect the first task by pressing ``0`` again and issue the subcommand ``:open``
 
 ## ansible-navigator Using execution environment from podman
 
@@ -66,7 +71,6 @@ $ podman login registry.redhat.io
 Username: {REGISTRY-SERVICE-ACCOUNT-USERNAME}
 Password: {REGISTRY-SERVICE-ACCOUNT-PASSWORD}
 Login Succeeded!
-
 ```
 
 Check your images if it is avaliable in podman and ansible-navigator
