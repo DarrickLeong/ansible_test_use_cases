@@ -149,7 +149,7 @@ $ podman push [automation-hub-url]/[container image name]
 $ sudo vim /etc/containers/registries.conf
 
 [registries.search]
-registries = ['registry.access.redhat.com', 'registry.redhat.io', 'docker.io', 'automation-hub-url']
+registries = ['registry.access.redhat.com', 'registry.redhat.io', 'docker.io', '{{ automation-hub-url }}']
 ```
 **Step 3**
 To see if it is working
