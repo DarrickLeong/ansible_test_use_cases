@@ -59,7 +59,7 @@ Inspect the play by pressing ``0``, inspect the first task by pressing ``0`` aga
 ## Using execution environment from ansible-navigator
 
 **Step 1**
-Login and Pull Ansible EE images from registry.redhat.io from ``podman``
+- Login and Pull Ansible EE images from registry.redhat.io from ``podman``
 
 ```bash
 $ podman login registry.redhat.io
@@ -75,7 +75,8 @@ $ podman images
 $ ansible-navigator images
 ```
 **Step 2**
-Update your image with the respective image name and tag
+- Update your image with the respective image name and tag
+- change enable to ``true``
 
 ```yaml
 execution-environment:
