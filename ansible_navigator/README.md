@@ -67,23 +67,25 @@ Username: {REGISTRY-SERVICE-ACCOUNT-USERNAME}
 Password: {REGISTRY-SERVICE-ACCOUNT-PASSWORD}
 Login Succeeded!
 
-$ podman pull registry.redhat.io/ansible-automation-platform***********/********
 ```
+
 Check your images if it is avaliable in podman and ansible-navigator
 ```bash
 $ podman images
 $ ansible-navigator images
 ```
 **Step 2**
-- Update your image with the respective image name and tag
+- Update your image with the respective image name
 - change enable to ``true``
 
 ```yaml
 execution-environment:
     container-engine: podman
-    image: ee-supported-rhel8:2.0.1-6.1634243686
+    image: ansible-automation-platform-20-early-access/ee-supported-rhel8
     enabled: true
 ```
+
+
 **Step 3**
 You may add in a ```wait_for``` module to show the playbook has been executed as a container on podman
 
@@ -91,7 +93,19 @@ You may add in a ```wait_for``` module to show the playbook has been executed as
 wait_for:
   timeout: 30
 ```
+- Now, you have now two options, you may notice that ```ansible-navigator``` knows that it should be using an execution environment but if none are currently present. You should see a pull process happening now where an execution environment is being pulled from container registry.
 
+**Option 1**
+- Pull the image directly into podman
+```bash
+$ podman pull registry.redhat.io/ansible-automation-platform-20-early-access/ee-supported-rhel8
+$ ansible-navigator run ping_test.yml
+```
+**Option 2**
+- Directly run the playbook and let ```ansible-navigator``` pull the image
+```bash
+$ ansible-navigator run ping_test.yml
+```
 ```bash
 $ watch podman ps
 

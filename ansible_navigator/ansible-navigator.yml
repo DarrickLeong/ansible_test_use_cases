@@ -2,8 +2,8 @@
 ansible-navigator:
   execution-environment:
     container-engine: podman
-    image: ee-supported-rhel8:2.0.1-6.1634243686
-    enabled: false
+    image: ansible-automation-platform-20-early-access/ee-supported-rhel8
+    enabled: true
 
   playbook-artifact:
     save-as: /home/darrick/playbook-artifacts/{playbook_name}-artifact-{ts_utc}.json
