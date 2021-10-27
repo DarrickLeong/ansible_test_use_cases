@@ -55,9 +55,9 @@ editor:
 Inspect the play by pressing ``0``, inspect the first task by pressing ``0`` again and issue the subcommand ``:open``
 
 ## Using execution environment from ansible-navigator
-Login and Pull Ansible EE images from registry.redhat.io from ``podman``
 
 **Step 1**
+Login and Pull Ansible EE images from registry.redhat.io from ``podman``
 
 ```bash
 podman login registry.redhat.io
@@ -67,6 +67,12 @@ Login Succeeded!
 
 podman pull registry.redhat.io/ansible-automation-platform***********/********
 ```
+Check your images if it is avaliable in podman and ansible-navigator
+```bash
+podman images
+ansible-navigator images
+```
+
 Open ansible-navigator.yml and change enabled: false to enabled: true under the execution-environment settings block.
 
 Notice that ansible-navigator knows that it should be using an execution environment but none are currently present. You should see a pull process happening now where an execution environment is being pulled from container registry. ansible-navigator can be configured in the same yaml file to pull from your own Private Automation Hub.
